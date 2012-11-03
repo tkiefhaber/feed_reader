@@ -1,0 +1,39 @@
+<style>
+  body {
+    background-color: beige;
+  }
+  dt {
+    padding:5px;
+    margin:5px;
+    font-size: 16px;
+    font-family: Arial;
+    width: 600px;
+  }
+
+  dd {
+    background-color: gainsboro;
+    padding: 15px;
+    font-size: 14px;
+    font-family: Arial;
+    margin-bottom: 15px;
+    width: 600px;
+  }
+
+  .separator {
+    border: solid;
+    margin: 15px;
+    padding: 20px;
+  }
+</style>
+
+<div id="recent_episodes">
+  <h3>Recent Posts</h3>
+  <dl>
+    <% for entry in FeedEntry.all(:limit => 100, :order => "published_at desc") %>
+      <div class="separator">
+        <dt class="selector"><%= link_to h(entry.name), entry.url %></dt>
+        <% unless entry.summary.nil? %><dd id="<%= entry.id %>"><%= h(entry.summary) %></dd><% end %>
+      </div>
+    <% end %>
+  </dl>
+</div>
