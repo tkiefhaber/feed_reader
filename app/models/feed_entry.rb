@@ -10,7 +10,7 @@ class FeedEntry < ActiveRecord::Base
     uncrate = "http://feeds.feedburner.com/uncrate"
     devour = "http://feeds.feedburner.com/devourfeed"
     loop do
-      sleep 3.seconds
+      sleep 3.minutes
       feed_urls = [people_news, wwtdd, uncrate, devour]
       feed_urls.each do |feed_url|
         feed = Feedzirra::Feed.fetch_and_parse(feed_url)
