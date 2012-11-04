@@ -23,6 +23,7 @@
     border: solid;
     margin: 15px;
     padding: 20px;
+    width: 675px;
   }
 </style>
 
@@ -31,7 +32,7 @@
   <dl>
     <% for entry in FeedEntry.all(:limit => 100, :order => "published_at desc") %>
       <div class="separator">
-        <dt class="selector"><%= link_to h(entry.name), entry.url %></dt>
+        <dt class="selector"><%= link_to h(entry.name), entry.url, :target => "_blank"  %></dt>
         <% unless entry.summary.nil? %><dd id="<%= entry.id %>"><%= h(entry.summary) %></dd><% end %>
       </div>
     <% end %>
